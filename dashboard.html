@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#5b2bd6">
+<title>Dashboard | NEXORA AI</title>
+<script>
+/* Apply saved theme before the page paints, so there is no flash */
+(function () {
+  var t = 'light';
+  try {
+    t = localStorage.getItem('nexora-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  } catch (e) {}
+  document.documentElement.dataset.theme = t;
+})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+<div class="app">
+
+  <aside class="side" aria-label="Sidebar">
+    <a class="brand" href="#overview"><span class="mark">N</span>NEXORA <b>AI</b></a>
+    <p class="tagline">Build. Automate. Grow.</p>
+    <nav id="sideNav" aria-label="Dashboard sections"></nav>
+    <a class="back" href="index.html">Back to website</a>
+  </aside>
+
+  <div class="main">
+    <header class="top">
+      <a class="brand top-brand" href="#overview" aria-label="NEXORA AI overview"><span class="mark">N</span></a>
+      <h1 id="pageTitle">Overview</h1>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+        <svg class="i ic-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="i ic-sun" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10zM12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>
+      </button>
+      <a class="avatar" href="#settings" aria-label="Profile placeholder and settings">G</a>
+    </header>
+
+    <main class="content" id="content">
+
+      <section class="view" id="v-overview" aria-label="Overview">
+        <div class="hero">
+          <span class="chip">Prototype preview</span>
+          <h2>Welcome to NEXORA AI</h2>
+          <p>Build. Automate. Grow. This is how your workspace is planned to look. The tools are not connected yet and every figure is sample data.</p>
+          <div class="hero-actions">
+            <a class="btn white" href="#builder">Build My Business</a>
+            <a class="btn ghost" href="#sales">Grow My Business</a>
+          </div>
+        </div>
+
+        <h2 class="h">Your tools</h2>
+        <div class="cards" id="toolCards"></div>
+
+        <div class="two">
+          <section class="box">
+            <div class="box-h"><h3>Recent activity</h3><em class="chip s">Sample data</em></div>
+            <ul class="act" id="activity"></ul>
+          </section>
+          <section class="box">
+            <div class="box-h"><h3>Usage overview</h3><em class="chip s">Sample data</em></div>
+            <div id="usage"></div>
+            <p class="note">Limits shown are proposed and are not enforced.</p>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" id="v-builder"></section>
+      <section class="view" id="v-sales"></section>
+      <section class="view" id="v-marketing"></section>
+      <section class="view" id="v-growth"></section>
+      <section class="view" id="v-settings"></section>
+
+    </main>
+  </div>
+
+  <nav class="tabbar" id="tabBar" aria-label="Mobile navigation"></nav>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="dashboard.js"></script>
+</body>
+</html>
